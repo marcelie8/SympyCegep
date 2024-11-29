@@ -12,6 +12,9 @@
 *.cb2
 .*.lb
 
+## Lua-typo
+*.typo
+
 ## Intermediate documents:
 *.dvi
 *.xdv
