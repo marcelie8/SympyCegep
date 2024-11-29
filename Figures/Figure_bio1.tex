@@ -1,34 +1,46 @@
 \documentclass[tikz]{standalone}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={%
+    markings,
+    mark=at position .5 with {\arrow{>}}},postaction={decorate}}
+}
+
 \begin{document}
 \begin{tikzpicture}[scale=2]
     % Dessine l'artère
-   \begin{scope}
-    \clip (3,0.3) rectangle (3.3,-0.3);
-    \draw[thick] (3,0) circle (0.3);
-   \end{scope}
-   \begin{scope}
-    \clip (2.7,0.3) rectangle (3,-0.3);
-    \draw[dashed] (3,0) circle (0.3);
-   \end{scope}
+    \begin{scope}
+        \clip (3,0.35) rectangle (3.35,-0.35);
+        \draw[thick] (3,0) circle (0.3);
+    \end{scope}
+    \begin{scope}
+        \clip (2.65,0.35) rectangle (3,-0.35);
+        \draw[dashed,thick] (3,0) circle (0.3);
+    \end{scope}
 
-   \draw[thick] (0,0) circle (0.3);
+    \draw[thick] (0,0) circle (0.3);
     \draw[thick] (0,0.3) -- (3,0.3);
     \draw[thick] (0,-0.3) -- (3,-0.3);
 
-
     % Dessine l'artériole
-    \draw[thick] (1.5,-0.2) ellipse (0.2 and 0.1);
+    \draw[dashed,thick] (1.5,-0.2) ellipse (0.2 and 0.1);
     \draw[dashed] (1.3,-0.2) -- (1.7,-0.2);
-    \draw[thick] (2,-1.7) ellipse (0.2 and 0.1);
+    \begin{scope}
+        \clip (1.55,-1.7) rectangle (2.45,-1.55);
+        \draw[dashed,thick] (2,-1.7) ellipse (0.2 and 0.1);
+    \end{scope}
+    \begin{scope}
+        \clip (1.55,-1.7) rectangle (2.45,-1.85);
+        \draw[thick] (2,-1.7) ellipse (0.2 and 0.1);
+    \end{scope}
     \draw[thick] (1.3,-0.2) -- (1.8,-1.7);
     \draw[thick] (1.7,-0.2) -- (2.2,-1.7);
-    
+        
     % Dessine les flèches
-    \draw[->,>=stealth,orange,thick] (0,0) -- (1.4,0);
+    \draw[->-,orange,thick] (0,0) -- (1.4,0);
     \draw[thick,fill=orange,draw=none] (0,0) circle (0.03);
     \draw[thick,fill=orange,draw=none] (1.4,0) circle (0.03);
-    \draw[dashed,orange] (1.4,0) -- (3,0);
-    \draw[->,>=stealth,orange,thick] (1.4,0) -- (2,-1.7);
+    \draw[dashed,thick,orange] (1.4,0) -- (3,0);
+    \draw[->-,orange,thick] (1.4,0) -- (2,-1.7);
     \draw[thick,fill=orange,draw=none] (1.4,0) circle (0.03);
     \draw[thick,fill=orange,draw=none] (2,-1.7) circle (0.03);
 
@@ -39,6 +51,5 @@
 
     \draw[<->,thick,yshift=15] (0,0) -- (3,0) node[midway,fill=white] {$a$};
     \draw[<->,thick,xshift=15] (3,0) -- (3,-1.7) node[midway,fill=white] {$b$};
-
 \end{tikzpicture}
 \end{document}
