@@ -10,20 +10,20 @@
     % Dessine l'artère
     \begin{scope}
         \clip (3,0.35) rectangle (3.35,-0.35);
-        \draw[thick] (3,0) circle (0.3);
+        \draw[thick] (3,0) ellipse (0.23 and 0.3);
     \end{scope}
     \begin{scope}
         \clip (2.65,0.35) rectangle (3,-0.35);
-        \draw[dashed,thick] (3,0) circle (0.3);
+        \draw[dashed,thick] (3,0) circle (0.23 and 0.3);
     \end{scope}
 
-    \draw[thick] (0,0) circle (0.3);
+    \draw[thick] (0,0) ellipse (0.23 and 0.3);
     \draw[thick] (0,0.3) -- (3,0.3);
     \draw[thick] (0,-0.3) -- (3,-0.3);
 
     % Dessine l'artériole
     \draw[dashed,thick] (1.5,-0.2) ellipse (0.2 and 0.1);
-    \draw[dashed] (1.3,-0.2) -- (1.7,-0.2);
+    %\draw[dashed] (1.3,-0.2) -- (1.7,-0.2);
     \begin{scope}
         \clip (1.55,-1.7) rectangle (2.45,-1.55);
         \draw[dashed,thick] (2,-1.7) ellipse (0.2 and 0.1);
@@ -32,9 +32,17 @@
         \clip (1.55,-1.7) rectangle (2.45,-1.85);
         \draw[thick] (2,-1.7) ellipse (0.2 and 0.1);
     \end{scope}
-    \draw[thick] (1.3,-0.2) -- (1.8,-1.7);
-    \draw[thick] (1.7,-0.2) -- (2.2,-1.7);
-        
+    \begin{scope}
+        \clip (1.25,-0.2) rectangle (1.8,-0.3);
+        \draw[dash pattern=on 2pt off 1pt,dash phase = .75pt,thick] (1.3,-0.2) -- (1.8,-1.7);
+        \draw[dash pattern=on 2pt off 1pt,dash phase = .75pt,thick] (1.7,-0.2) -- (2.2,-1.7);
+    \end{scope}
+    \begin{scope}
+        \clip (1.25,-0.3) rectangle (2.3,-1.75);
+        \draw[thick] (1.3,-0.2) -- (1.8,-1.7);
+        \draw[thick] (1.7,-0.2) -- (2.2,-1.7);
+    \end{scope}
+       
     % Dessine les flèches
     \draw[->-,orange,thick] (0,0) -- (1.4,0);
     \draw[thick,fill=orange,draw=none] (0,0) circle (0.03);
@@ -50,6 +58,6 @@
     \draw[thick,orange] (2.04,0) arc (0:-60:0.8) node[midway,right] {$\theta$}; % Angle theta placé a 40°
 
     \draw[<->,thick,yshift=15] (0,0) -- (3,0) node[midway,fill=white] {$a$};
-    \draw[<->,thick,xshift=15] (3,0) -- (3,-1.7) node[midway,fill=white] {$b$};
+    \draw[<->,thick,xshift=13] (3,0) -- (3,-1.7) node[midway,fill=white] {$b$};
 \end{tikzpicture}
 \end{document}
